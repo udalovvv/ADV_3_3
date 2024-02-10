@@ -6,6 +6,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
           crossorigin="anonymous">
+
+    </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+    </script>
+
 </head>
 <body>
 <div th:insert="navbar :: copy (${authUser},${authentication})"></div>
@@ -36,22 +41,12 @@
                                     <th scope="row">ID</th>
                                     <th scope="row">First name</th>
                                     <th scope="row">Last name</th>
+                                    <th scope="row">Age</th>
                                     <th scope="row">Email</th>
                                     <th scope="row">Role</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td th:text = "${user.getId()}" class="align-middle">ID</td>
-                                    <td th:text = "${user.getFirstName()}" class="align-middle">Name</td>
-                                    <td th:text = "${user.getLastName()}" class="align-middle">Surname</td>
-                                    <td th:text = "${user.getEmail()}" class="align-middle">Email</td>
-                                    <td class="align-middle">
-                                        <div th:each="role : ${user.roles}">
-                                            <span th:text="${role.getRole()}"></span>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <tbody id="userTablePlacement">
                                 </tbody>
                             </table>
                         </div>
@@ -66,5 +61,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" th:src="@{js/GetUser.js}"></script>
+<script>
+    getUser();
+</script>
+
+
 </body>
 </html>
