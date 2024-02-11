@@ -3,7 +3,7 @@ async function getUser() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
 
-    const response = await fetch("api/users?id="+id);
+    const response = await fetch("api/user?id="+id);
 
     if (response.ok) {
         let json = await response.json()
@@ -33,6 +33,5 @@ async function getUser() {
             `
             placement.append(element);
     }
-
 
 }

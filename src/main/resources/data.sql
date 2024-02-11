@@ -6,6 +6,10 @@ INSERT INTO users (`age`, `email`, `first_name`, `last_name`, `password`)
 VALUES ('2', 'user@mail.ru', 'user', 'user', '$2a$12$cm066YTzIjDk0C361x6u1eKYiBsX0e/3abc5UCm.FvD5xdq4aSwLG');
 -- password = 1
 
+INSERT INTO users (`age`, `email`, `first_name`, `last_name`, `password`)
+VALUES ('3', 'ua@mail.ru', 'ua', 'ua', '$2a$12$cm066YTzIjDk0C361x6u1eKYiBsX0e/3abc5UCm.FvD5xdq4aSwLG');
+-- password = 1
+
 INSERT INTO roles (`role`)
 VALUES ('ADMIN');
 
@@ -17,3 +21,9 @@ VALUES (1, 1);
 
 INSERT INTO users_roles (`user_id`, `role_id`)
 VALUES (2, 2);
+
+INSERT INTO users_roles (`user_id`, `role_id`)
+VALUES (3, 1);
+
+INSERT INTO users_roles (`user_id`, `role_id`)
+VALUES (3, 2);

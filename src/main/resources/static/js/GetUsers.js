@@ -1,18 +1,17 @@
 
 async function getUsers() {
-
-
     const response = await fetch("api/users");
 
     if (response.ok) {
-        let json = await response.json()
-            .then(data => replaceTable(data));
+        let json = await response.json();
+        replaceTable(json);
+        replaceTableUser(json);
+
     } else {
         alert("Ошибка HTTP: " + response.status);
     }
 
     function replaceTable(data) {
-
         const placement = document.getElementById("usersTablePlacement")
         placement.innerHTML = "";
         data.forEach(({id, firstName, lastName, age, email, authorities}) => {
@@ -46,5 +45,27 @@ async function getUsers() {
         })
     }
 
-
+    function replaceTableUser(data) {
+        const params = new URLSearchParams(window.location.search);
+        const userId = parseInt(params.get('id'));
+        const user = data.find((user) => user.id === userId);
+        const placement = document.getElementById("userTablePlacement")
+        placement.innerHTML = "";
+        const { id, firstName, lastName, age, email, authorities } = user;
+        let userRoles = "";
+        authorities.forEach((role) => {
+            userRoles = userRoles + role.role + " ";
+        });
+        const element = document.createElement("tr");
+        element.innerHTML = `
+            <th scope="row">${id}</th>
+            <td>${firstName}</td>
+            <td>${lastName}</td>
+            <td>${age}</td>
+            <td>${email}</td>
+            <td>${userRoles}</td>
+            <td>
+            `
+        placement.append(element);
+    }
 }
